@@ -38,7 +38,7 @@ Wav2PWN-Project/
 ```
 
 ## Evaluation
-After downloading the result files and placing them in the Result/ folder, you can evaluate the adversarial examples by running the corresponding model scripts located in **the test_eval/** directory. Each script loads a specific ASR model and outputs the transcription results to help assess the effectiveness of the attack.
+After downloading the result files and placing them in the Result/ folder, you can evaluate the adversarial examples by running the corresponding model scripts located in the **test_eval/** directory. Each script loads a specific ASR model and outputs the transcription results to help assess the effectiveness of the attack.
 
 ## Generate New Adversarial Audio Example
 If you wish to generate your own adversarial audio sample, you can use the provided generate_adversarial.py script. This script allows you to freely choose a target ASR model and generate a single adversarial example.
@@ -66,7 +66,7 @@ model.to(DEVICE)
 ```
 
 This single-sample generation is designed for quick testing and debugging of attack parameters.
-To perform batch adversarial generation and evaluation, please refer to the scripts in the **Different_model_batch_eval/** directory.
+To perform batch adversarial generation and evaluation, please refer to the scripts in the **Different_model_batch_generate/** directory.
 
 ## Automatically Generate Multiple Adversarial Samples in Batches
 To generate multiple adversarial examples in batch, use the scripts provided in the **Different_model_batch_eval/** directory. This folder contains 8 different SSL-based ASR model configurations. After setting your desired target transcription, simply run the corresponding script.
