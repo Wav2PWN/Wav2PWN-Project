@@ -26,7 +26,7 @@ Wav2PWN-Project/
 
 You can access our generated adversarial examples for eight test models from the link below: (Because the result files are too large, we store our test results in Google Drive.)
 
-🔗 [Download Result.zip from Google Drive](https://drive.google.com/file/d/your_file_id/view?usp=sharing)
+🔗 [Download Result.zip from Google Drive]([https://drive.google.com/file/d/your_file_id/view?usp=sharing](https://drive.google.com/file/d/1PdKeUzuYpdTGFHOf4KX0ORmjg_0-Gy1O/view?usp=drive_link))
 
  After downloading, unzip the file and place the <code>Result/</code> folder into the root of the project: 
 ```
