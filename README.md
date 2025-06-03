@@ -12,4 +12,4 @@ Recommended subset: test-clean.tar.gz
 
 After this step, your directory structure should look like:
 
-<pre> ``` Wav2PWN-Project/ ├── LibriSpeech/ │ ├── test-clean/ │ └── ... ``` </pre>
+<pre lang="markdown"> ``` Wav2PWN-Project/ ├── LibriSpeech/ │ └── test-clean/ │ └── ... ``` </pre>
