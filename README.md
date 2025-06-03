@@ -6,7 +6,7 @@ Wav2PWN leverages the transferability of adversarial examples across self-superv
 
 # How to Run
 ## Download LibriSpeech Dataset
-To run this project, you will need a set of clean original audio samples. We recommend using the LibriSpeech test-clean subset.
+We use the LibriSpeech dataset as the original clean speech dataset, so before running the program, you need to download the LibriSpeech dataset first. We recommend using the LibriSpeech test-clean subset.
 
 🔗 Download Link
 Official site: http://www.openslr.org/12
@@ -24,7 +24,7 @@ Wav2PWN-Project/
 
 ## 📥 Download Results
 
-You can access our generated adversarial examples and transcription logs for eight test models from the link below:
+You can access our generated adversarial examples for eight test models from the link below: (Because the result files are too large, we store our test results in Google Drive.)
 
 🔗 [Download Result.zip from Google Drive](https://drive.google.com/file/d/your_file_id/view?usp=sharing)
 
@@ -37,3 +37,46 @@ Wav2PWN-Project/
 │   └── transcription_log.csv
 ```
 
+## Evaluation
+After downloading the result files and placing them in the Result/ folder, you can evaluate the adversarial examples by running the corresponding model scripts located in **the test_eval/** directory. Each script loads a specific ASR model and outputs the transcription results to help assess the effectiveness of the attack.
+
+## Generate New Adversarial Audio Example
+If you wish to generate your own adversarial audio sample, you can use the provided generate_adversarial.py script. This script allows you to freely choose a target ASR model and generate a single adversarial example.
+
+The example below demonstrates how to configure attack parameters and specify the model using Wav2Vec2-large-960h:
+
+```python
+
+import torch
+from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
+
+TARGET_TEXT = "HELLO WORLD"
+EPSILON = 0.05  # Initial perturbation strength
+lr = 0.001
+total_steps = 1000
+rw = 0.1  # Regularization weight
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
+# Load model and processor
+name = "Facebook/wav2vec2-large-960h"
+model = Wav2Vec2ForCTC.from_pretrained(name)
+processor = Wav2Vec2Processor.from_pretrained(name)
+model.to(DEVICE)
+
+```
+
+This single-sample generation is designed for quick testing and debugging of attack parameters.
+To perform batch adversarial generation and evaluation, please refer to the scripts in the **Different_model_batch_eval/** directory.
+
+## Automatically Generate Multiple Adversarial Samples in Batches
+To generate multiple adversarial examples in batch, use the scripts provided in the **Different_model_batch_eval/** directory. This folder contains 8 different SSL-based ASR model configurations. After setting your desired target transcription, simply run the corresponding script.
+
+Each script will automatically:
+
+Randomly select clean speech samples from the LibriSpeech/ dataset
+
+Apply the adversarial attack using the selected model
+
+Save the perturbed audio and transcription results to Result/
+
+You can customize the target phrase, attack strength (ε), and number of optimization iterations to suit your experimental needs.
