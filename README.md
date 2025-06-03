@@ -12,7 +12,4 @@ Recommended subset: test-clean.tar.gz
 
 After this step, your directory structure should look like:
 
-Wav2PWN-Project/
-├── LibriSpeech/
-│   ├── dev-clean/
-│   └── ...
+<pre> ``` Wav2PWN-Project/ ├── LibriSpeech/ │ ├── test-clean/ │ └── ... ``` </pre>
